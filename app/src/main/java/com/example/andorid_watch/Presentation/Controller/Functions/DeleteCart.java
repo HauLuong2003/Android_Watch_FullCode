@@ -9,10 +9,10 @@ import com.example.andorid_watch.Presentation.Controller.Command.CommandCart;
 import java.util.List;
 
 public class DeleteCart extends CommandCart {
-    private String productId;
+    private int productId;
 
     //Constructor
-    public DeleteCart(ICartServices cartServices, String productId)
+    public DeleteCart(ICartServices cartServices, int productId)
     {
         super(cartServices);
         this.productId = productId;

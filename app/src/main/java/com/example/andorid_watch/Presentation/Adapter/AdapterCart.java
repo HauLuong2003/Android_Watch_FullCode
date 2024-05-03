@@ -19,6 +19,7 @@ import com.example.andorid_watch.Domain.services.Interface.IUserServices;
 import com.example.andorid_watch.Domain.services.Manager.UserManager;
 import com.example.andorid_watch.Presentation.Activity.CartActivity;
 import com.example.andorid_watch.Presentation.Controller.Command.CommandProcessor;
+import com.example.andorid_watch.Presentation.Controller.Functions.DeleteCart;
 import com.example.andorid_watch.Presentation.Controller.Functions.ListCart;
 import com.example.andorid_watch.Presentation.Controller.Functions.ListUser;
 import com.example.andorid_watch.Presentation.Controller.Functions.UpdateCart;
@@ -35,7 +36,7 @@ import retrofit2.Response;
 
 public class AdapterCart extends RecyclerView.Adapter<AdapterCart.CartViewHolder> {
     private TextView textViewName;
-
+    private ImageView txt_delete;
     private Context mContext;
     private List<Product> mProductList;
     private List<Integer> itemCountList;
@@ -88,7 +89,33 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.CartViewHolder
 
             }
         });
+        holder.add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Tăng số lượng sản phẩm khi nhấn nút cộng
+                //lấy số lượng hiện tại
+                int currentQuantity = Integer.parseInt(holder.unit.getText().toString());
+                // tăng số lượng thêm 1
+                currentQuantity++;
+                holder.unit.setText(String.valueOf(currentQuantity));
 
+                //Xu ly gia tri ben sqlite
+
+            }
+        });
+        holder.txt_Delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean checkResult = deleteCart_inSqlite(product.getId());
+                if (checkResult) {
+                    Toast.makeText(mContext, "Đã xóa sản phẩm khỏi giỏ hàng", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mContext, "Xóa sản phẩm thất bại", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+        });
     }
 
     @Override
@@ -128,6 +155,14 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.CartViewHolder
         }
         return false;
     }
+    private boolean deleteCart_inSqlite(int productId) {
+        boolean checkResult = commandProcessor.executeCart(
+                new DeleteCart(cartServices, productId)
+        );
+        return checkResult;
+    }
+
+    //-------XỬ LÝ XÓA SẢN PHẨM TRONG SQLITE
 
 
 }

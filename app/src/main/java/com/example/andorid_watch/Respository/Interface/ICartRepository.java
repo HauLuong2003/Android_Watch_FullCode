@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ICartRepository {
     boolean insertCart(Product product);
-    boolean deleteCart(String id_Product);
+    boolean deleteCart(int id_Product);
     boolean updateCart(Product product);
     List<Product> getAllCart();
     boolean deleteAllCart();

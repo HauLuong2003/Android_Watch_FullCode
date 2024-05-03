@@ -28,8 +28,8 @@ public class CartServices implements ICartServices {
     }
 
     @Override
-    public boolean deleteCart(String id_Product) {
-        if(! id_Product.isEmpty())
+    public boolean deleteCart(int id_Product) {
+        if( id_Product <0)
         {
             return cartRepository.deleteCart(id_Product);
         }

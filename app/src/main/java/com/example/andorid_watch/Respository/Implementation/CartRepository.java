@@ -50,11 +50,11 @@ public class CartRepository implements ICartRepository {
     }
 
     @Override
-    public boolean deleteCart(String id_Product) {
+    public boolean deleteCart(int id_Product) {
         // Xóa giỏ hàng khỏi sqlite
         // Xác định điều kiện xóa dựa trên id_product
         String selection = "id_product = ?";
-        String[] selectionArgs = { id_Product };
+        String[] selectionArgs = {String.valueOf(id_Product)};
 
         // Thực hiện xóa sản phẩm từ database
         int rowsDeleted = database.delete("CART", selection, selectionArgs);
