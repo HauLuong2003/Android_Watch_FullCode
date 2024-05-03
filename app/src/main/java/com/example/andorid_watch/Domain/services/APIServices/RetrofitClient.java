@@ -1,4 +1,4 @@
-package com.example.andorid_watch.Domain.services;
+package com.example.andorid_watch.Domain.services.APIServices;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

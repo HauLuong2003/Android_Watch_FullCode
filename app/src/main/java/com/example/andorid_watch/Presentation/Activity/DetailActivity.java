@@ -8,16 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.andorid_watch.Domain.Models.Product;
 import com.example.andorid_watch.R;
-import com.example.andorid_watch.Domain.services.ProductService;
 import com.squareup.picasso.Picasso;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DetailActivity extends AppCompatActivity {
     TextView name;

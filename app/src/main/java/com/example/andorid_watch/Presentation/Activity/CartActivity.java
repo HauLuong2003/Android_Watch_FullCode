@@ -13,7 +13,7 @@ import com.example.andorid_watch.Presentation.Adapter.AdapterCart;
 import com.example.andorid_watch.Respository.DB_Helper.DatabaseHelper;
 import com.example.andorid_watch.Domain.Models.Product;
 import com.example.andorid_watch.R;
-import com.example.andorid_watch.Domain.services.ProductService;
+import com.example.andorid_watch.Domain.services.APIServices.ProductService;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class CartActivity extends AppCompatActivity implements AdapterCart.CartItemClickListener{
+public class CartActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private AdapterCart mAdapter;
     private DatabaseHelper dbHelper;
@@ -37,9 +37,7 @@ public class CartActivity extends AppCompatActivity implements AdapterCart.CartI
         mRecyclerView = findViewById(R.id.view_cart);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         dbHelper = new DatabaseHelper(this);
-        mAdapter = new AdapterCart(this, mProductList);
 
-        mAdapter.setCartItemClickListener(this); // Thiết lập CartItemClickListener cho adapter
 
 
         ImageView imageView = findViewById(R.id.image_arrow);
@@ -74,9 +72,6 @@ public class CartActivity extends AppCompatActivity implements AdapterCart.CartI
                     if (response.isSuccessful()) {
                         Product product = response.body();
 
-                        dbHelper.addProduct(product);
-                        List<Product> productList = dbHelper.getAllProducts();
-                        mAdapter = new AdapterCart(CartActivity.this, productList);
                         mRecyclerView.setAdapter(mAdapter);
                     }
                 }
@@ -89,10 +84,5 @@ public class CartActivity extends AppCompatActivity implements AdapterCart.CartI
         }
     }
 
-    @Override
-    public void deleteproduct(int id) {
-        DatabaseHelper dbHelper = new DatabaseHelper(this);
-        dbHelper.deleteProduct(id); // productId là ID của sản phẩm bạn muốn xóa
 
-    }
 }

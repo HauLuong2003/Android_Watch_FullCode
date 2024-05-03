@@ -15,16 +15,9 @@ import com.example.andorid_watch.Domain.services.Manager.ProductManager;
 import com.example.andorid_watch.Presentation.Adapter.AdapterProduct;
 import com.example.andorid_watch.Domain.Models.Product;
 import com.example.andorid_watch.R;
-import com.example.andorid_watch.Domain.services.ProductService;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class MainActivity extends AppCompatActivity {

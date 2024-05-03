@@ -5,8 +5,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.andorid_watch.Domain.Models.Category;
-import com.example.andorid_watch.Domain.services.CategoryService;
-import com.example.andorid_watch.Domain.services.RetrofitClient;
+import com.example.andorid_watch.Domain.services.APIServices.CategoryService;
+import com.example.andorid_watch.Domain.services.APIServices.RetrofitClient;
 
 import java.util.List;
 

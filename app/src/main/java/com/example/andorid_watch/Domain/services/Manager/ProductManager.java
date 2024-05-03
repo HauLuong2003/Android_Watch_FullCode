@@ -5,18 +5,14 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.andorid_watch.Domain.Models.Product;
-import com.example.andorid_watch.Domain.services.ProductService;
-import com.example.andorid_watch.Domain.services.RetrofitClient;
-import com.example.andorid_watch.Presentation.Activity.MainActivity;
-import com.example.andorid_watch.Presentation.Adapter.AdapterProduct;
+import com.example.andorid_watch.Domain.services.APIServices.ProductService;
+import com.example.andorid_watch.Domain.services.APIServices.RetrofitClient;
 import com.google.gson.Gson;
 
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProductManager {
     private final ProductService productAPIServices;

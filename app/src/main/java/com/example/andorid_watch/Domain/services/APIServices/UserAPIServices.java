@@ -1,4 +1,4 @@
-package com.example.andorid_watch.Domain.services;
+package com.example.andorid_watch.Domain.services.APIServices;
 
 
 import com.example.andorid_watch.Domain.Models.User;
@@ -19,7 +19,7 @@ public interface UserAPIServices {
     Call<User> createUser(@Body User user);
 
     // người dùng đăng nhập
-    @POST("users")
+    @POST("user/login")
     Call<User> loginUser(@Body LoginRequest loginRequest);
     // sau khi đăng nhập sẽ hiện thông tin người dùng
     // @GET("users/me")
